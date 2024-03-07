@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <GraphicsView
+                x:Name="graphicsView"
+                WidthRequest="140"
+                HeightRequest="140"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                >
+                
+            </GraphicsView>
+            <Entry 
+                x:Name="pointEntry"
+                Placeholder="Punkt"/>   
+            <Button
+                x:Name="Btn"
+                Text="Click me"
+                Clicked="Btn_Clicked"
+                HorizontalOptions="Center" />
+            <Button 
+                Text="Uruchom kompas"
+                Clicked="Button_Clicked"
+                />
+            <Label Text="" x:Name="compassData"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
