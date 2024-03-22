@@ -34,11 +34,17 @@ public partial class MainPage : ContentPage
         /* drawable.color = Colors.Red;
          drawable.point = Int16.Parse(pointEntry.Text);
          graphicsView.Invalidate();*/
-        
-            Location location = await Geolocation.Default.GetLastKnownLocationAsync();
-
-            if (location != null)
-                DisplayAlert("OK", $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}", "OK");
+        try
+        {
+            HttpClient client = new HttpClient();
+            using HttpResponseMessage httpResponse = await client.GetAsync("http://10.0.2.2:3000/ok?lat=54.245748&lon=20.000327");
+            string responseBody = await httpResponse.Content.ReadAsStringAsync();
+            DisplayAlert("OK", responseBody, "cancel");
+        }
+        catch (HttpRequestException ex)
+        {
+            DisplayAlert("OK", ex.Message, "ok");
+        }
         
     }
 
