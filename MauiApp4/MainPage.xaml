@@ -6,31 +6,32 @@
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
+            Padding="10"
+            VerticalOptions="Start">
+            <HorizontalStackLayout VerticalOptions="Start">
+                
+            <Label Text="Najbliższa stacja: "
+                   FontSize="28"/>
+            <Label x:Name="nearestStation"
+                   FontAttributes="Bold"
+                   FontSize="28"/>
+            </HorizontalStackLayout>
             <GraphicsView
                 x:Name="graphicsView"
                 WidthRequest="140"
                 HeightRequest="140"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"
+                VerticalOptions="Center"                
                 >
-                
             </GraphicsView>
-            <Entry 
-                x:Name="pointEntry"
-                Placeholder="Punkt"/>   
-            <Button
-                x:Name="Btn"
-                Text="Click me"
-                Clicked="Btn_Clicked"
-                HorizontalOptions="Center" />
+
+            
             <Button 
                 Text="Uruchom kompas"
                 Clicked="Button_Clicked"
                 />
-            <Label Text="" x:Name="compassData"/>
+            <Label FontSize="18" x:Name="stationData"/>
+            
         </VerticalStackLayout>
     </ScrollView>
 

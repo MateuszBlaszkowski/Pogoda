@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.Page2"
+             Title="Lista stacji">
+    <ScrollView>
+        <VerticalStackLayout Padding="5,15" Spacing="15">
+            <SearchBar TextChanged="SearchBar_TextChanged" PlaceholderColor="#888" Placeholder="Szukaj" />
+            
+            <ListView x:Name="listView" RowHeight="60" SelectionMode="None" ItemTapped="listView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding herb}" Margin="5"/>
+                                    <Label Text="{Binding miejscowosc}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+    </VerticalStackLayout>
+  </ScrollView>
+   
+</ContentPage>
