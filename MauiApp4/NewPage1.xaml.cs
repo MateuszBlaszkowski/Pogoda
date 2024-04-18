@@ -65,7 +65,16 @@ public partial class NewPage1 : ContentPage
             HttpResponseMessage result = await client.PostAsync("http://10.0.2.2:3000/getHistoricalData", httpContent);
             string content = await result.Content.ReadAsStringAsync();
 			stations = JsonConvert.DeserializeObject<List<Stations>>(content);
-			await DisplayAlert("oK", stations[0].stacja, "OK");
+			if (double.Parse(stations[0].cisnienie) > double.Parse(stations[stations.Count-1].cisnienie))
+			{
+                arrow.Source = "arrow2.png";
+                arrow.IsVisible = true;
+			}
+            else
+            {
+				arrow.Source = "arrow3.png";
+				arrow.IsVisible = true;
+            }
         }
     }
 }

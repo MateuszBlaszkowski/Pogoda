@@ -43,6 +43,7 @@
                 <TimePicker Time="12:00" Format="H:mm" x:Name="timeTo"/>
                 <Button Text="Szukaj" Margin="10,0,0,0" Clicked="Button_Clicked"/>
             </StackLayout>
+            <Image IsVisible="False" x:Name="arrow"/>
         </StackLayout>
     </Grid>
 </ContentPage>

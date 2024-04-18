@@ -55,6 +55,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\arrow.png" />
+	  <None Remove="Resources\Images\arrow2.png" />
+	  <None Remove="Resources\Images\arrow3.png" />
 	  <None Remove="Resources\Images\explore.png" />
 	  <None Remove="Resources\Images\kompas.png" />
 	  <None Remove="Resources\Images\list.png" />
