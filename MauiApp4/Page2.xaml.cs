@@ -17,7 +17,7 @@ public partial class Page2 : ContentPage
         using (var client = new HttpClient())
         {
 			HttpContent httpContent = new StringContent(""/*"{\"lat\":52, \"lon\":21}"*/, System.Text.Encoding.UTF8, "application/json");
-			HttpResponseMessage result = await client.PostAsync("http://10.0.2.2:3000/getAllStations", httpContent);
+			HttpResponseMessage result = await client.PostAsync("https://srv50655.seohost.com.pl/n3/getAllStations", httpContent);
 			string content = await result.Content.ReadAsStringAsync();
 			list = JsonConvert.DeserializeObject<List<Cities>>(content);
             listView.BindingContext = this;

@@ -43,7 +43,7 @@ public partial class MainPage : ContentPage
             }
             if (arrow != null)
             {
-                canvas.Rotate(p2, dirtyRect.Center.X, dirtyRect.Center.Y);
+                canvas.Rotate(-point+p2, dirtyRect.Center.X, dirtyRect.Center.Y);
                 canvas.DrawImage(arrow, dirtyRect.Left + 62, dirtyRect.Top + 32, arrow.Width, arrow.Height);
             }
             
@@ -54,7 +54,7 @@ public partial class MainPage : ContentPage
             }
             if(image != null)
             {
-                canvas.Rotate(point-p2, dirtyRect.Center.X, dirtyRect.Center.Y);
+                canvas.Rotate(-point-p2, dirtyRect.Center.X, dirtyRect.Center.Y);
                 canvas.DrawImage(image, dirtyRect.Left+62, dirtyRect.Top+32, image.Width, image.Height);
             }
         }
@@ -69,14 +69,15 @@ public partial class MainPage : ContentPage
 	}
     private async void getNearestStation()
     {
-        GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(3));
+        GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(3));
         Location location = await Geolocation.Default.GetLocationAsync(request, new CancellationTokenSource().Token);
         if (location != null)
         {
+            DisplayAlert("OK", location.Latitude+" "+location.Longitude,"OK");
             using (var client = new HttpClient())
             {
-                HttpContent httpContent = new StringContent("{\"lat\":\""+location.Latitude+"\", \"lon\":\""+location.Longitude+"\"}", System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage result = await client.PostAsync("http://10.0.2.2:3000/getNearestStation", httpContent);
+                HttpContent httpContent = new StringContent("{\"lat\":\""+location.Latitude.ToString().Replace(",", ".") + "\", \"lon\":\""+location.Longitude.ToString().Replace(",",".")+"\"}", System.Text.Encoding.UTF8, "application/json");
+                HttpResponseMessage result = await client.PostAsync("https://srv50655.seohost.com.pl/n3/getNearestStation", httpContent);
                 string content = await result.Content.ReadAsStringAsync();
                 var json = JsonConvert.DeserializeObject<List<Stations>>(content);
                 nearestStation.Text = json[0].stacja;
